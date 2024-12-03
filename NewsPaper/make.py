@@ -44,10 +44,10 @@ comm1.like()
 for author in Author.objects.all():
     author.update_rating()
 
-best_author = Author.objects.all().order_by('rating')[0]
+best_author = Author.objects.all().order_by('-rating')[0]
 print(best_author.user.username)
 
-best_art = Post.objects.filter(kind=article).order_by('rating')[0]
+best_art = Post.objects.filter(kind=article).order_by('-rating')[0]
 print(best_art.time_in, best_art.author.user.username, best_art.rating, best_art.title, best_art.preview(), sep='\n')
 
 for comm in Comment.objects.filter(post=best_art.pk):
